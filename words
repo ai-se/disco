@@ -1,0 +1,10 @@
+wc -w $1
+Start=`wc -w $1  | gawk '{print $1}'`
+ [ -n "$2" ] && Start=$2
+while true
+do
+  Now=`wc -w $1  | gawk '{print $1}'`
+	gawk 'BEGIN { print '$Now'; print '$Start'; print '$Now'  - '$Start'}' 
+	sleep 120
+done
+
